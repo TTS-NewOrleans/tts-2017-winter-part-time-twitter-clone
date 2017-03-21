@@ -1,0 +1,29 @@
+<h1>All The Tweets In The Universe!</h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <!-- Iterate through all the tweets give each one its own row -->
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%= tweet.message %></td>
+        <td><%= tweet.user.username %></td>
+        <td><%= link_to 'Show', tweet %></td>
+        <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?'} %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tweet', new_tweet_path, class: 'btn btn-success btn-md' %>
